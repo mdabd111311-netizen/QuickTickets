@@ -29,12 +29,13 @@ It is built using **HTML, CSS, and Vanilla JavaScript** and uses **localStorage*
 
 ## 📂 Project Structure
 
+```
 quicktickets/
 │── index.html
 │── style.css
 │── app.js
 │── README.md
-
+```
 
 ---
 
