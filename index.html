@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuickTickets - Online Travel Booking</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">QT</div>
+        <div>
+          <h1>QuickTickets</h1>
+          <div class="muted" style="font-size:13px">
+            Book bus, train & flights in seconds
+          </div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <div class="muted" id="welcomeText">Not signed in</div>
+        <button class="btn" id="openAuth">Login / Register</button>
+      </div>
+    </header>
+
+    <main class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+        <div>
+          <div class="muted">Where are you going?</div>
+          <div style="font-weight:700;font-size:18px">Search & Book Tickets</div>
+        </div>
+        <div style="text-align:right">
+          <button class="btn ghost" id="viewHistory">View My Bookings</button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" id="transportTabs">
+        <div class="tab active" data-type="bus">🚌 Bus</div>
+        <div class="tab" data-type="train">🚆 Train</div>
+        <div class="tab" data-type="flight">✈️ Flight</div>
+      </div>
+
+      <div id="searchArea">
+        <div class="grid">
+          <div>
+            <label>From</label>
+            <input id="from" placeholder="City or Station" />
+          </div>
+          <div>
+            <label>To</label>
+            <input id="to" placeholder="City or Station" />
+          </div>
+          <div>
+            <label>Departure</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label>Passengers</label>
+            <select id="passengers">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+          <button class="btn" id="searchBtn">Search</button>
+          <button class="btn ghost" id="clearBtn">Clear</button>
+          <button class="back-btn" id="backBtn">← Back</button>
+        </div>
+
+        <div class="results" id="results"></div>
+      </div>
+
+      <div id="historyArea" style="display:none;margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-weight:700">My Bookings</div>
+          <button class="btn ghost" id="closeHistory">Close</button>
+        </div>
+        <div id="historyList"></div>
+      </div>
+    </main>
+
+    <footer>
+      Built for projects — demo only. Data saved locally in your browser.
+    </footer>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="authModal" style="display:none" class="modal-back">
+    <div class="modal fade-in">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-weight:700">Account</div>
+        <button class="back-btn" id="closeAuth">✕</button>
+      </div>
+
+      <div id="authForms">
+        <div id="loginForm">
+          <label>Email</label>
+          <input id="loginEmail" type="email" />
+          <label>Password</label>
+          <input id="loginPass" type="password" />
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn" id="loginBtn">Login</button>
+            <button class="btn ghost" id="showRegister">Register</button>
+          </div>
+        </div>
+
+        <div id="registerForm" style="display:none">
+          <label>Full name</label>
+          <input id="regName" />
+          <label>Email</label>
+          <input id="regEmail" type="email" />
+          <label>Password</label>
+          <input id="regPass" type="password" />
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn" id="registerBtn">Create account</button>
+            <button class="btn ghost" id="showLogin">Back to login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="bookModal" style="display:none" class="modal-back">
+    <div class="modal fade-in">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-weight:700">Confirm Booking</div>
+        <button class="back-btn" id="closeBook">✕</button>
+      </div>
+      <div id="bookingDetails"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="confirmBookBtn">Confirm</button>
+        <button class="btn ghost" id="cancelBookBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JS -->
+  <script src="app.js"></script>
+</body>
+</html>
